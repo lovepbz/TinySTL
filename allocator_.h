@@ -8,7 +8,7 @@ public:
 #define LEN 16
 	allocator_() { for (int i = 0; i < LEN; ++i)arr[i] = nullptr; };
 	struct obj { obj* p; };
-	void* alloc(size_t size)
+	void* allocate(size_t size)
 	{
 		int index = size / 8 +(size%8>0)-1;
 		if (index >= LEN)return malloc(size);
@@ -31,7 +31,7 @@ public:
 			return res;
 		}
 	}
-	void dealloc(obj* p,size_t size)
+	void deallocate(obj* p,size_t size)
 	{
 		int index = size / 8 + (size % 8 > 0) - 1;
 		if (index >= LEN)
